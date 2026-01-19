@@ -1,0 +1,87 @@
+<odoo>
+    <!-- Vista de Formulario -->
+    <record id="view_evaluacion_desempeno_form" model="ir.ui.view">
+        <field name="name">evaluacion.desempeno.form</field>
+        <field name="model">evaluacion.desempeno</field>
+        <field name="arch" type="xml">
+            <form string="Evaluación de Desempeño">
+                <sheet>
+                    <group>
+                        <field name="title"/>
+                        <field name="assigned_to"/>
+                        <field name="deadline"/>
+                        <field name="priority"/>
+                        <field name="state"/>
+                    </group>
+                    <group>
+                        <field name="description" widget="text"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista Kanban -->
+    <record id="view_evaluacion_desempeno_kanban" model="ir.ui.view">
+        <field name="title">evaluacion.desempeno.kanban</field>
+        <field name="model">evaluacion.desempeno</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="title"/>
+                <field name="assigned_to"/>
+                <field name="deadline"/>
+                <field name="priority"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record evaluacion_desempeno_kanban">
+                            <div>
+                                <strong><span t-esc="record.title.value"/></strong>
+                            </div>
+                            <div>
+                                <span t-esc="record.state.value"/>
+                            </div>
+                            <div>
+                                <span t-esc="record.priority.value"/>
+                            </div>
+                            <div>
+                                <!-- Mostrar el título de la evaluación asignada -->
+                                <span t-esc="record.assigned_to.value or 'No Asignado'"/>
+                            </div>
+                            <div>
+                                <span t-esc="record.deadline.value or 'Sin Fecha'"/>
+                            </div>
+                            <div>
+                                <!-- Botón para eliminar el registro -->
+                                <button name="unlink" type="object" class="btn btn-danger"
+                                    string="Eliminar"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Acción para abrir las vistas -->
+    <record id="action_evaluacion_desempeno" model="ir.actions.act_window">
+        <field name="title">Evaluación de Desempeño</field>
+        <field name="res_model">evaluacion.desempeno</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="help" type="html">
+            <p>
+                Crea y organiza evaluaciones de desempeño a empleados.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menú en la raíz -->
+    <menuitem id="menu_evaluacion_desempeno_module_root"
+        name="Evaluación de Desempeño"
+        sequence="10"/>
+    <menuitem id="menu_evaluacion_desempeno_module"
+        name="Evaluaciones"
+        parent="menu_evaluacion_desempeno_module_root"
+        action="action_evaluacion_desempeno"
+        sequence="10"/>
+</odoo>
