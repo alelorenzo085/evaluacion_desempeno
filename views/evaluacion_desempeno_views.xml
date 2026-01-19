@@ -23,7 +23,7 @@
 
     <!-- Vista Kanban -->
     <record id="view_evaluacion_desempeno_kanban" model="ir.ui.view">
-        <field name="title">evaluacion.desempeno.kanban</field>
+        <field name="name">evaluacion.desempeno.kanban</field>
         <field name="model">evaluacion.desempeno</field>
         <field name="arch" type="xml">
             <kanban>
@@ -65,7 +65,7 @@
 
     <!-- Acción para abrir las vistas -->
     <record id="action_evaluacion_desempeno" model="ir.actions.act_window">
-        <field name="title">Evaluación de Desempeño</field>
+        <field name="name">Evaluación de Desempeño</field>
         <field name="res_model">evaluacion.desempeno</field>
         <field name="view_mode">kanban,form</field>
         <field name="help" type="html">
