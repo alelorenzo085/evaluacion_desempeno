@@ -1,2 +1,3 @@
-# evalucacion_desempeno
-Laboratorio n.º 53 para el módulo de Sistemas de Gestión Empresarial del CFGS DAM
+# Laboratorio 52 - Creación de módulo gestión de tareas pesonales
+
+El siguiente proyecto tiene como objetivo desarrollar un nuevo módulo para Odoo que gestione las evaluaciones de desempeño de los empleados de una empresa.
